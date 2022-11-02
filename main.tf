@@ -32,7 +32,7 @@ resource "aws_iam_access_key" "service_accounts" {
 
 resource "local_file" "service_accounts" {
   for_each = { for sa in var.service_accounts : sa.name => sa }
-  filename = "./aws-iam-users/${each.value.name}.json"
+  filename = "./aws-iam-credentials/${each.value.name}.json"
   content = jsonencode({
     "aws_access_key_id"     = aws_iam_access_key.service_accounts[each.value.name].id
     "aws_secret_access_key" = aws_iam_access_key.service_accounts[each.value.name].secret
