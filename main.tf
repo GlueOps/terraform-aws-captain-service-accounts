@@ -9,7 +9,6 @@ terraform {
 variable "service_accounts" {
   type = list(object({
     name      = string
-    namespace = string
     policy    = string
   }))
 }
